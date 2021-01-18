@@ -4,7 +4,7 @@
     "production": "$PRODUCTION_PROJECT_NAME"
   },
   "targets": {
-    "test-prod-1": {
+    "test-prod-1-17a8e": {
       "hosting": {
         "test-prod-1-17a8e": [
           "test-prod-1-17a8e"
