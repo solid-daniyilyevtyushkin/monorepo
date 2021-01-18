@@ -19,7 +19,7 @@
       ]
     },
     {
-      "target": "$PRODUCTION_SITE_NAME",
+      "target": "$PRODUCTION_HOSTING_NAME",
       "public": "build/web",
       "ignore": [
         "firebase.json",

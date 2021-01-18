@@ -21,7 +21,7 @@ jobs:
       GOOGLE_SIGN_IN_CLIENT_ID: ${{ secrets.GOOGLE_SIGN_IN_CLIENT_ID }}
       GOOGLE_SIGN_IN_CLIENT_ID_PRODUCTION: ${{ secrets.GOOGLE_SIGN_IN_CLIENT_ID_PRODUCTION }}
       PRODUCTION_PROJECT_NAME: ${{ secrets.PRODUCTION_PROJECT_NAME }}
-      PRODUCTION_SITE_NAME: ${{ secrets.PRODUCTION_SITE_NAME }}
+      PRODUCTION_HOSTING_NAME: ${{ secrets.PRODUCTION_HOSTING_NAME }}
       PROJECT_PATH: metrics/web/
     steps:
       - name: Checkout
@@ -127,5 +127,5 @@ jobs:
       - name: Deploy auto renderer version to Firebase
         env:
           FIREBASE_TOKEN: ${{ env.FIREBASE_TOKEN_PRODUCTION }}
-        run: firebase use production && firebase deploy --only hosting:$PRODUCTION_SITE_NAME
+        run: firebase use production && firebase deploy --only hosting:$PRODUCTION_HOSTING_NAME
         working-directory: metrics/web/

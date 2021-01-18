@@ -16,8 +16,8 @@
     },
     "$PRODUCTION_PROJECT_NAME": {
         "hosting": {
-            "$PRODUCTION_SITE_NAME": [
-                "$PRODUCTION_SITE_NAME"
+            "$PRODUCTION_HOSTING_NAME": [
+                "$PRODUCTION_HOSTING_NAME"
             ]
         }
     }
