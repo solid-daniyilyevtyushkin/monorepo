@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "test-prod-1",
+    "default": "test-prod-1-17a8e",
     "production": "$PRODUCTION_PROJECT_NAME"
   },
   "targets": {
