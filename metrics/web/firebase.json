@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "metrics-d9c67",
+      "target": "test-prod-1-17a8e",
       "public": "build/web",
       "ignore": [
         "firebase.json",
@@ -10,7 +10,16 @@
       ]
     },
     {
-      "target": "metrics-skia",
+      "target": "test-prod-1-site2",
+      "public": "build/web",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "$PRODUCTION_SITE_NAME",
       "public": "build/web",
       "ignore": [
         "firebase.json",

@@ -24,6 +24,8 @@ Future<void> main() async {
   final configFactory = MetricsConfigFactory();
   final metricsConfig = configFactory.create();
 
+  print(metricsConfig.googleSignInClientId);
+
   if (kReleaseMode) {
     final userAgent = window?.navigator?.userAgent;
     final eventProcessor = UserAgentEventProcessor(userAgent);

@@ -1,17 +1,25 @@
 {
   "projects": {
-    "default": "metrics-d9c67"
+    "default": "test-prod-1",
+    "production": "$PRODUCTION_PROJECT_NAME"
   },
   "targets": {
-    "metrics-d9c67": {
+    "test-prod-1": {
       "hosting": {
-        "metrics-d9c67": [
-          "metrics-d9c67"
+        "test-prod-1-17a8e": [
+          "test-prod-1-17a8e"
         ],
-        "metrics-skia": [
-          "metrics-skia"
+        "test-prod-1-site2": [
+          "test-prod-1-site2"
         ]
       }
+    },
+    "$PRODUCTION_PROJECT_NAME": {
+        "hosting": {
+            "$PRODUCTION_SITE_NAME": [
+                "$PRODUCTION_SITE_NAME"
+            ]
+        }
     }
   }
 }
