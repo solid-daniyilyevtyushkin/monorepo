@@ -86,27 +86,27 @@ jobs:
         run: flutter clean && flutter build web --release --source-maps --dart-define=FLUTTER_WEB_AUTO_DETECT=true
         working-directory: metrics/web/
 
-      - name: Prepare metrics config for dev skia environment
-        env:
-          SENTRY_RELEASE: ${{ env.SENTRY_RELEASE_AUTORENDERER }}
-        run: |
-          export SENTRY_ENVIRONMENT="development-skia"
-          : > build/web/metrics_config.js
-          eval "echo \"$(sed 's/"/\\"/g' web/metrics_config.js)\"" >> build/web/metrics_config.js
-        working-directory: metrics/web/
-
-      - name: Update Source Maps for auto renderer app version
-        run: |
-          sentry-cli releases new $SENTRY_RELEASE_AUTORENDERER
-          sentry-cli releases files $SENTRY_RELEASE_AUTORENDERER upload-sourcemaps . --ext dart --rewrite
-          cd ./build/web/
-          sentry-cli releases files $SENTRY_RELEASE_AUTORENDERER upload-sourcemaps . --ext map --ext js --rewrite
-          sentry-cli releases finalize $SENTRY_RELEASE_AUTORENDERER
-        working-directory: metrics/web/
-
-      - name: Deploy auto renderer version to Firebase
-        run: firebase use default && firebase deploy --only hosting:test-prod-1-site2
-        working-directory: metrics/web/
+#      - name: Prepare metrics config for dev skia environment
+#        env:
+#          SENTRY_RELEASE: ${{ env.SENTRY_RELEASE_AUTORENDERER }}
+#        run: |
+#          export SENTRY_ENVIRONMENT="development-skia"
+#          : > build/web/metrics_config.js
+#          eval "echo \"$(sed 's/"/\\"/g' web/metrics_config.js)\"" >> build/web/metrics_config.js
+#        working-directory: metrics/web/
+#
+#      - name: Update Source Maps for auto renderer app version
+#        run: |
+#          sentry-cli releases new $SENTRY_RELEASE_AUTORENDERER
+#          sentry-cli releases files $SENTRY_RELEASE_AUTORENDERER upload-sourcemaps . --ext dart --rewrite
+#          cd ./build/web/
+#          sentry-cli releases files $SENTRY_RELEASE_AUTORENDERER upload-sourcemaps . --ext map --ext js --rewrite
+#          sentry-cli releases finalize $SENTRY_RELEASE_AUTORENDERER
+#        working-directory: metrics/web/
+#
+#      - name: Deploy auto renderer version to Firebase
+#        run: firebase use default && firebase deploy --only hosting:test-prod-1-site2
+#        working-directory: metrics/web/
 
       - name: Prepare metrics config for production environment
         env:
@@ -126,11 +126,11 @@ jobs:
 
       - name: test
         run: |
-          echo .firebaserc
-          echo firebase.json
+          cat .firebaserc
+          cat firebase.json
 
       - name: Deploy auto renderer version to Firebase
         env:
           FIREBASE_TOKEN: ${{ env.FIREBASE_TOKEN_PRODUCTION }}
-        run: firebase use production && firebase deploy
+        run: firebase use production && firebase deploy --only hosting:$PRODUCTION_SITE_NAME
         working-directory: metrics/web/
