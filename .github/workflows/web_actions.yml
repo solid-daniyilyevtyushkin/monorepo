@@ -75,7 +75,7 @@ jobs:
         working-directory: metrics/web/
 
       - name: Deploy HTML version to Firebase
-        run: firebase deploy --only hosting:test-prod-1-17a8e
+        run: firebase use default && firebase deploy --only hosting:test-prod-1-17a8e
         working-directory: metrics/web/
 
       - name: Switch to Flutter latest master version
@@ -105,7 +105,7 @@ jobs:
         working-directory: metrics/web/
 
       - name: Deploy auto renderer version to Firebase
-        run: firebase deploy --only hosting:test-prod-1-site2
+        run: firebase use default && firebase deploy --only hosting:test-prod-1-site2
         working-directory: metrics/web/
 
       - name: Prepare metrics config for production environment
