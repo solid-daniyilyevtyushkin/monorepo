@@ -149,6 +149,13 @@ class _InjectionContainerState extends State<InjectionContainer> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        throw Exception();
+      },
+    );
+
     final googleSignIn = GoogleSignIn(
       scopes: ['email'],
       clientId: widget.metricsConfig?.googleSignInClientId,
