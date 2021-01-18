@@ -120,14 +120,8 @@ jobs:
 
       - name: Update Firebase Hosting configuration for production
         run: |
-          eval "echo \"$(sed 's/"/\\"/g' .firebaserc)\"" >> .firebaserc
-          eval "echo \"$(sed 's/"/\\"/g' firebase.json)\"" >> firebase.json
-        working-directory: metrics/web/
-
-      - name: test
-        run: |
-          cat .firebaserc
-          cat firebase.json
+          eval "echo \"$(sed 's/"/\\"/g' .firebaserc)\"" > .firebaserc
+          eval "echo \"$(sed 's/"/\\"/g' firebase.json)\"" > firebase.json
         working-directory: metrics/web/
 
       - name: Deploy auto renderer version to Firebase
