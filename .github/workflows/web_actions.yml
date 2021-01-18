@@ -54,30 +54,30 @@ jobs:
       - name: Install Sentry CLI
         run: brew install getsentry/tools/sentry-cli
 
-      - name: Build release app
-        run: flutter clean && flutter build web --release --source-maps
-        working-directory: metrics/web/
-
-      - name: Prepare metrics config for dev environment
-        run: |
-          export SENTRY_ENVIRONMENT="development"
-          : > build/web/metrics_config.js
-          eval "echo \"$(sed 's/"/\\"/g' web/metrics_config.js)\"" >> build/web/metrics_config.js
-        working-directory: metrics/web/
-
-      - name: Update Source Maps for HTML app version
-        run: |
-          sentry-cli releases new $SENTRY_RELEASE
-          sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps . --ext dart --rewrite
-          cd ./build/web/
-          sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps . --ext map --ext js --rewrite
-          sentry-cli releases finalize $SENTRY_RELEASE
-        working-directory: metrics/web/
-
-      - name: Deploy HTML version to Firebase
-        run: firebase use default && firebase deploy --only hosting:test-prod-1-17a8e
-        working-directory: metrics/web/
-
+#      - name: Build release app
+#        run: flutter clean && flutter build web --release --source-maps
+#        working-directory: metrics/web/
+#
+#      - name: Prepare metrics config for dev environment
+#        run: |
+#          export SENTRY_ENVIRONMENT="development"
+#          : > build/web/metrics_config.js
+#          eval "echo \"$(sed 's/"/\\"/g' web/metrics_config.js)\"" >> build/web/metrics_config.js
+#        working-directory: metrics/web/
+#
+#      - name: Update Source Maps for HTML app version
+#        run: |
+#          sentry-cli releases new $SENTRY_RELEASE
+#          sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps . --ext dart --rewrite
+#          cd ./build/web/
+#          sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps . --ext map --ext js --rewrite
+#          sentry-cli releases finalize $SENTRY_RELEASE
+#        working-directory: metrics/web/
+#
+#      - name: Deploy HTML version to Firebase
+#        run: firebase use default && firebase deploy --only hosting:test-prod-1-17a8e
+#        working-directory: metrics/web/
+#
       - name: Switch to Flutter latest master version
         run: flutter channel master && flutter upgrade
         working-directory: metrics/web/
@@ -123,6 +123,11 @@ jobs:
           eval "echo \"$(sed 's/"/\\"/g' .firebaserc)\"" >> .firebaserc
           eval "echo \"$(sed 's/"/\\"/g' firebase.json)\"" >> firebase.json
         working-directory: metrics/web/
+
+      - name: test
+        run: |
+          echo .firebaserc
+          echo firebase.json
 
       - name: Deploy auto renderer version to Firebase
         env:
