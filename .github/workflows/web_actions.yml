@@ -3,9 +3,6 @@ name: Metrics Web Application Actions
 on:
   push:
     branches: master
-    paths:
-      - metrics/web/**
-      - metrics/core/**
 
 jobs:
   metrics-actions:
