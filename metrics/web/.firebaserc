@@ -1,7 +1,6 @@
 {
   "projects": {
     "default": "test-prod-1-17a8e",
-    "production": "$PRODUCTION_PROJECT_NAME"
   },
   "targets": {
     "test-prod-1-17a8e": {
@@ -13,13 +12,6 @@
           "test-prod-1-site2"
         ]
       }
-    },
-    "$PRODUCTION_PROJECT_NAME": {
-        "hosting": {
-            "$PRODUCTION_HOSTING_NAME": [
-                "$PRODUCTION_HOSTING_NAME"
-            ]
-        }
     }
   }
 }
