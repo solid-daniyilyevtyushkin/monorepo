@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "test-prod-1-17a8e",
+    "default": "test-prod-1-17a8e"
   },
   "targets": {
     "test-prod-1-17a8e": {
