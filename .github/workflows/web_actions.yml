@@ -76,7 +76,6 @@ jobs:
 
       - name: Deploy HTML version to Firebase
         run: |
-          firebase target:clear hosting metrics
           firebase target:apply hosting metrics test-prod-1-17a8e
           firebase deploy --only hosting:metrics
         working-directory: metrics/web/
@@ -109,6 +108,7 @@ jobs:
 
       - name: Deploy auto renderer version to Firebase
         run: |
+          firebase target:clear hosting metrics
           firebase target:apply hosting metrics test-prod-1-site2
           firebase deploy --only hosting:metrics
         working-directory: metrics/web/
