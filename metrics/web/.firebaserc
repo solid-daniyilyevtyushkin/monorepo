@@ -1,17 +1,5 @@
 {
   "projects": {
     "default": "test-prod-1-17a8e"
-  },
-  "targets": {
-    "test-prod-1-17a8e": {
-      "hosting": {
-        "test-prod-1-17a8e": [
-          "test-prod-1-17a8e"
-        ],
-        "test-prod-1-site2": [
-          "test-prod-1-site2"
-        ]
-      }
-    }
   }
 }
